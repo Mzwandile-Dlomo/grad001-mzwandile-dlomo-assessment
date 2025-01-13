@@ -6,8 +6,6 @@ import jakarta.validation.constraints.Size;
 
 @Setter
 @Getter
-@Data
-@AllArgsConstructor
 public class WasteCategoryRequest {
     @NotBlank(message = "Name is required")
     @Size(min = 2, max = 100, message = "Name must be between 2 and 100 characters")
@@ -15,8 +13,4 @@ public class WasteCategoryRequest {
 
     @Size(max = 500, message = "Description cannot exceed 500 characters")
     private String description;
-
-    public WasteCategoryRequest() {}
-
-
 }

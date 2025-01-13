@@ -1,8 +1,10 @@
 package com.enviro.assessment.grad001.mzwandiledlomo.grad_assessment.dto.response;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class WasteCategoryResponse {
     private Long id;
     private String name;
