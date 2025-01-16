@@ -4,17 +4,17 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Setter
 @Getter
 @Entity
 @Table(name = "waste_categories")
-//@NoArgsConstructor
 public class WasteCategory {
     // Getters and Setters
     @Id
@@ -28,6 +28,9 @@ public class WasteCategory {
 
     @Size(max = 500, message = "Description cannot exceed 500 characters")
     private String description;
+
+    @OneToMany(mappedBy = "wasteCategory", cascade = CascadeType.ALL)
+    private List<RecyclingTip> recyclingTips = new ArrayList<>();
 
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)

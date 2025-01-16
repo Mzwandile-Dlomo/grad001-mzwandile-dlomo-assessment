@@ -11,5 +11,5 @@ import java.util.Optional;
 public interface WasteCategoryRepository extends JpaRepository<WasteCategory, Long> {
     boolean existsByName(String name);
     List<WasteCategory> findByNameContainingIgnoreCaseOrDescriptionContainingIgnoreCase(String name, String description);
-    Optional<WasteCategory> findByName(String name);
+    WasteCategory findByName(String name);
 }

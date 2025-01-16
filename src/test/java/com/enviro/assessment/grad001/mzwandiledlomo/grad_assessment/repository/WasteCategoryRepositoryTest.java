@@ -9,29 +9,29 @@ import org.springframework.test.context.ActiveProfiles;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@ActiveProfiles("test")
 @DataJpaTest
+@ActiveProfiles("test")
 public class WasteCategoryRepositoryTest {
 
     @Autowired
     private WasteCategoryRepository wasteCategoryRepository;
 
-    private WasteCategory sampleWasteCategory;
+    private WasteCategory wasteCategory;
 
     @BeforeEach
     void setUp() {
         // Clear the repository before each test
         wasteCategoryRepository.deleteAll();
 
-        sampleWasteCategory = new WasteCategory();
-        sampleWasteCategory.setName("Plastic");
-        sampleWasteCategory.setDescription("Recyclable plastic materials");
+        wasteCategory = new WasteCategory();
+        wasteCategory.setName("Plastic");
+        wasteCategory.setDescription("Recyclable plastic materials");
     }
 
     @Test
     void shouldSaveWasteCategory() {
         // when
-        WasteCategory savedCategory = wasteCategoryRepository.save(sampleWasteCategory);
+        WasteCategory savedCategory = wasteCategoryRepository.save(wasteCategory);
 
         // then
         assertThat(savedCategory).isNotNull();
@@ -43,21 +43,21 @@ public class WasteCategoryRepositoryTest {
     @Test
     void shouldFindWasteCategoryByName() {
         // given
-        WasteCategory savedCategory = wasteCategoryRepository.save(sampleWasteCategory);
+        WasteCategory savedCategory = wasteCategoryRepository.save(wasteCategory);
 
         // when
-        WasteCategory found = wasteCategoryRepository.findByName("Plastic").orElse(null);
+        WasteCategory found = wasteCategoryRepository.findByName("Plastic");
 
         // then
         assertThat(found).isNotNull();
-        assertThat(found.getName()).isEqualTo(sampleWasteCategory.getName());
+        assertThat(found.getName()).isEqualTo(wasteCategory.getName());
         assertThat(found.getId()).isEqualTo(savedCategory.getId());
     }
 
     @Test
     void shouldCheckIfCategoryExists() {
         // given
-        wasteCategoryRepository.save(sampleWasteCategory);
+        wasteCategoryRepository.save(wasteCategory);
 
         // when
         boolean exists = wasteCategoryRepository.existsByName("Plastic");
@@ -69,7 +69,7 @@ public class WasteCategoryRepositoryTest {
     @Test
     void shouldFindCategoriesByNameOrDescription() {
         // given
-        wasteCategoryRepository.save(sampleWasteCategory);
+        wasteCategoryRepository.save(wasteCategory);
 
         // when
         var foundByName = wasteCategoryRepository

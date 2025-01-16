@@ -59,8 +59,8 @@ public class WasteCategoryServiceTest {
         wasteCategoryResponse.setName("Electronics");
         wasteCategoryResponse.setDescription("Recyclable Electronics waste");
 
-        // Mock behavior
-        when(wasteCategoryMapper.toEntity(wasteCategoryRequest)).thenReturn(wasteCategory);
+
+            when(wasteCategoryMapper.toEntity(wasteCategoryRequest)).thenReturn(wasteCategory);
         when(wasteCategoryRepository.save(any(WasteCategory.class))).thenReturn(wasteCategory);
         when(wasteCategoryMapper.toResponse(wasteCategory)).thenReturn(wasteCategoryResponse);
 
