@@ -14,8 +14,8 @@ The **Spring Boot Waste Management API** is a RESTful web service designed to ma
 ### **Steps to Run the Application Locally**
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
-   cd springboot-waste-management-api
+   git clone github.com/Mzwandile-Dlomo/grad001-mzwandile-dlomo-assessment/
+   cd grad001-mzwandile-dlomo-assessment
    ```
 
 2. Build the project using Maven:
@@ -31,9 +31,9 @@ The **Spring Boot Waste Management API** is a RESTful web service designed to ma
 4. Access the API at `http://localhost:8080`
 
 5. To inspect the database, access the H2 console at `http://localhost:8080/h2-console`:
-    - **JDBC URL**: `jdbc:h2:mem:testdb`
+    - **JDBC URL**: `jdbc:h2:mem:wastedb`
     - **Username**: `sa`
-    - **Password**: (leave empty)
+    - **Password**: password
 
 ---
 
